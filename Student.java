@@ -1,40 +1,54 @@
-package practical2;
-/*NAME: Bhakti Bailurkar
- * RollNo: 1
- * Aim: Programs on Class and Object
-Create a class named 'Student' with variables name, roll_no, contact_no.
-Create 3 objects of the class Student and assign and print the values of the variables name, roll_no,
-  contact_no for each individual student.
+package practical11;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+
+/*Expt NO.:11 
+ * Name:Bhakti Deepak Bailurkar
+ * DIV: SE A
+ * RollNO.: 1
+ * Aim:AIM: Program on Exception handling and user defined exception 
+Ask the user to enter marks for any 3 subjects. The subjects must be out of 50 each.
+ Calculate the percentage attained by the students. 
+Store the marks entered by the students in an array.
+Demonstrate the following exception:
+ArithmeticException
+ArrayIndexOutOfBoundsException
+IOException
+For User defined exception if the user enters marks < 0 or > 50 then demonstrate
+ user-defined exception displaying “Invalid marks”.
+ * 
  */
 public class Student {
-	String name;
-	int rollno,contactno;
 	
-	
-	
-	public static void main(String[] args) {
-		
-		Student s1 = new Student();
-		Student s2 = new Student();
-		Student s3 = new Student();
-		
-		s1.name="Bhakti Bailurkar";
-		s1.rollno=1;
-		s1.contactno=123456789;
-		
-		s2.name="Radhika Bailurkar";
-		s2.rollno=2;
-		s2.contactno=234567891;
-		
-		s3.name="Roma Shirodkar";
-		s3.rollno=3;
-		s3.contactno=345678912;
-		System.out.println("name: "+s1.name+" rollno: "+s1.rollno+" contactno: "+s1.contactno );
-		System.out.println("name: "+s2.name+" rollno: "+s2.rollno+" contactno: "+s2.contactno );
-		System.out.println("name: "+s3.name+" rollno: "+s3.rollno+" contactno: "+s3.contactno );
-		
-		System.out.println("Bhakti Bailurkar");
-		
+	public static void main(String[] args) throws IOException {
+		double totalmarks;
+		double percentage;
+		double totalvalues=0;
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		try {
+		double marks[] = new double[3];
+		for(int i=0;i<marks.length;i++) {
+			/*
+			 * throws IOException
+			 */
+			System.out.println("Enter marks:");
+			marks[i]=Double.parseDouble(br.readLine());
+			totalvalues+=marks[i];
+		}}catch(ArrayIndexOutOfBoundsException ae) {
+			System.out.println("Please Enter inside Array Bounds");
+		}
+		System.out.println("totalvalues: "+totalvalues);
+		System.out.println("Enter total marks");
+		totalmarks = Double.parseDouble(br.readLine());
+		try {
+			percentage = totalvalues*100/totalmarks;
+			System.out.println("Percentage: "+percentage);
+		}catch(ArithmeticException e) {
+			System.out.println("cannot divide by 0");
+		}
 	}
-
+	
 }
